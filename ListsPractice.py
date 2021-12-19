@@ -39,51 +39,54 @@ class singleLinkedList:
         while (head != None):
             print(head.value)
             head = head.next
-    def searchinTheList(self,val:int,head:Node)->Node:
-        while(head!=None):
+
+    def searchinTheList(self, val: int, head: Node) -> Node:
+        while (head != None):
             if head.value == val:
                 return head
             head = head.next
         return None
-    def deleteElemntinMiddleOfList(self,head:Node,val:int):
-        while head.next!=None:
-            #print(head.next.value)
+
+    def deleteElemntinMiddleOfList(self, head: Node, val: int):
+        while head.next != None:
+            # print(head.next.value)
             if head.next.value == val:
-                #print("Found here!!")
-                RemovalNode:Node = head.next
+                # print("Found here!!")
+                RemovalNode: Node = head.next
                 head.next = head.next.next
                 RemovalNode.next = None
             head = head.next
 
 
-class doublyLinkedList:
+class circularSinglyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
-    def insertEnd(self, datalist: list = []) -> Node:
-        # *** Refer to DLL_insert_End.jpeg for more clarification *** #
-        if len(datalist) ==0 : return None
-        node1 = Node(datalist[0]) # create an initial node and point it's head and tail to this node
+
+    def insertEnd(self, datalist: list = []) -> 'Optional[Node]':
+        # *** Refer to circular_SLL.jpeg for more clarification *** #
+        if len(datalist) == 0: return None
+        node1 = Node(datalist[0])  # create an initial node and point it's head and tail to this node
         self.head = self.tail = node1
-        node1.next = self.head # in DLL, current node's next will always point to head
-        i=1
-        while(i<len(datalist)):
-            new_node = Node(datalist[i])  #create the new node with data
-            self.tail.next = new_node # tail is end og DLL; however pointing to head. we need to cut the link of tail
-               # which is pointing to head. that link must be established to the new node created.
-            new_node.next = self.head # newly created node's next must be pointed to head to complete circular property
-            self.tail = new_node # to keep tack of last inserted node, the tail must be updated to new node's address
-            i+=1
+        node1.next = self.head  # in DLL, current node's next will always point to head
+        i = 1
+        while (i < len(datalist)):
+            new_node = Node(datalist[i])  # create the new node with data
+            self.tail.next = new_node  # tail is end og DLL; however pointing to head. we need to cut the link of tail
+            # which is pointing to head. that link must be established to the new node created.
+            new_node.next = self.head  # newly created node's next must be pointed to head to complete circular property
+            self.tail = new_node  # to keep tack of last inserted node, the tail must be updated to new node's address
+            i += 1
         return self.head
-    def traveseDoubleLinkedList(self,head:Node):
+
+    def traveseDoubleLinkedList(self, head: Node):
         headptr = head
-        while head.next!=headptr:
+        while head.next != headptr:
             print(head.value)
             head = head.next
 
 
-
-doublyLinkedList = doublyLinkedList()
+circularSinglyLinkedList = circularSinglyLinkedList()
 dataList = [1, 2, 3, 4, 5, 6, 7]
-dllhead= doublyLinkedList.insertEnd(dataList)
-doublyLinkedList.traveseDoubleLinkedList(dllhead)
+dllhead = circularSinglyLinkedList.insertEnd(dataList)
+circularSinglyLinkedList.traveseDoubleLinkedList(dllhead)
