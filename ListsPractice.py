@@ -58,10 +58,9 @@ class singleLinkedList:
             head = head.next
 
 
-class circularSinglyLinkedList:
+class circularSinglyLinkedList(singleLinkedList):
     def __init__(self):
-        self.head = None
-        self.tail = None
+        super().__init__()
 
     def insertEnd(self, datalist: list = []) -> 'Optional[Node]':
         # *** Refer to circular_SLL.jpeg for more clarification *** #
@@ -79,14 +78,13 @@ class circularSinglyLinkedList:
             i += 1
         return self.head
 
-    def traveseDoubleLinkedList(self, head: Node):
+
+
+    def traveseCircularLinkedList(self, head: Node):
         headptr = head
         while head.next != headptr:
             print(head.value)
             head = head.next
 
 
-circularSinglyLinkedList = circularSinglyLinkedList()
-dataList = [1, 2, 3, 4, 5, 6, 7]
-dllhead = circularSinglyLinkedList.insertEnd(dataList)
-circularSinglyLinkedList.traveseDoubleLinkedList(dllhead)
+
