@@ -91,7 +91,24 @@ class Graph:
         incomingonlyList = []
         for vertex in self.graphDict:
             if vertex not in hasIncoming:incomingonlyList.append(vertex)
-        print(incomingonlyList)
+        return(incomingonlyList)
+
+    def TopologicalSortHelper(self,v,stack,visited):
+        visited.add(v)
+        if v in self.graphDict: edges = self.graphDict[v]
+        else: edges = []
+        for edge in edges:
+            if edge not in visited:
+                self.TopologicalSortHelper(edge,stack,visited)
+        stack.append(v)
+
+    def TopologicalSort(self,nonZeroVertices):
+            stack = []
+            visited = set()
+            for nzV in nonZeroVertices:
+                self.TopologicalSortHelper(nzV,stack,visited)
+            return stack[::-1]
+
 
 
 
@@ -114,4 +131,5 @@ customGraph.addEdge("B", "D")
 customGraph.addEdge("B", "C")
 customGraph.addEdge("D", "F")
 customGraph.printGraph()
-customGraph.findZeroIncomingEdges()
+
+print(customGraph.TopologicalSort(customGraph.findZeroIncomingEdges()))
