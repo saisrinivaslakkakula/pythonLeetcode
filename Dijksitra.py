@@ -91,6 +91,7 @@ def dijkstra(graph,initNode):
 
 
 graph = Graph()
+#for git op
 graph.addNode("A")
 graph.addNode("B")
 graph.addNode("C")
