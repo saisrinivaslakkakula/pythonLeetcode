@@ -1,5 +1,5 @@
 class Solution:
-    def nextGreater(self,nums,i,n):
+    def getNextMin(self,nums,i,n):
         min_dif = float('inf')
         min_d_idx = i
         j = i+1
@@ -11,6 +11,7 @@ class Solution:
                     min_d_idx = j
             j+=1
         return min_d_idx
+        
     def nextPermutation(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
@@ -23,7 +24,7 @@ class Solution:
         flag = False
         while i>=0:
             if nums[i] < prev:
-                min_dif_idx = self.nextGreater(nums,i,nums[i])
+                min_dif_idx = self.getNextMin(nums,i,nums[i])
                 print("Replace ",nums[i]," with ", nums[min_dif_idx])
                 nums[i],nums[min_dif_idx] = nums[min_dif_idx], nums[i]
                 print("After replace:", nums)
@@ -35,4 +36,5 @@ class Solution:
             else: prev = nums[i]
             i-=1
         if not flag: nums.sort()
+                
         
