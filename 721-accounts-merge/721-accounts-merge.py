@@ -1,4 +1,5 @@
 class Solution(object):
+    # Read notes
     def DFS(self,email,graph,visited,nodes):
         nodes.append(email)
         visited.add(email)
