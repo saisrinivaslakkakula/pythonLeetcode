@@ -11,14 +11,15 @@ class Solution:
         sum_v = 0
         while queue:
             curr_val,curr_node = queue.popleft()
+            cur_sum = curr_val*10 + curr_node.val
             if not curr_node.left and not curr_node.right:
                 #print(curr_val,curr_node.val)
-                sum_v += curr_val*10 + curr_node.val
+                sum_v += cur_sum
                 #print(sum_v)
             if curr_node.left:
-                queue.append((curr_val*10+curr_node.val,curr_node.left))
+                queue.append((cur_sum,curr_node.left))
             if curr_node.right:
-                queue.append((curr_val*10+curr_node.val,curr_node.right))
+                queue.append((cur_sum,curr_node.right))
         return(sum_v)
             
                 
