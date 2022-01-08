@@ -30,5 +30,3 @@ class Solution:
             head.left = tail
         return(head)
         
-        
-        
