@@ -1,17 +1,21 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
+        indices_to_remove = set()
         for i,c in enumerate(s):
-            if c =="(": stack.append(('(',i))
-            elif c==")":
-                if len(stack)>0 and stack[-1][0] =='(': stack.pop()
-                else: stack.append((')',i))
-        #print(stack)
-        str_list = list(s)
-        for c in stack:
-            char,idx = c
-            str_list[idx] = ""
-        return "".join(str_list)
-            
-                    
+            if c =='(':
+                stack.append(i)
+            elif c ==')' and stack:
+                stack.pop()
+            elif c ==')' and not stack:
+                indices_to_remove.add(i)
+        indices_to_remove = indices_to_remove.union(set(stack))
+        res_list = []
+        for i,c in enumerate(s):
+            if i not in indices_to_remove:
+                res_list.append(c)
+        res = "".join(res_list)
+        return(res)
+        
+                
         
